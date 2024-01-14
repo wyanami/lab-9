@@ -1,13 +1,84 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.App {
+  width: clamp(600px, 60%, 1200px);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  color: whitesmoke;
+}
+:root {
+  --header-grid-cols: 4;
+  --calendar-height: 600px;
+}
+header {
+ width: 100%;
+ height: 130px;
+ display: grid;
+ grid-template-columns: repeat(var(--header-grid-cols), 1fr);
+ column-gap: 20px;
+ row-gap: 20px;
+ margin-bottom: 40px;
+ position: sticky;
+ top: 0;
+ z-index: 10;
+ background-color: var(--main-bg-color);
+ font-family: Arial;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+header>div:first-child {
+  width:100%;
+height: 100%;
+  grid-column-start: 1;
+  grid-column-end: calc(var(--header-grid-cols) + 1);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.content-wrapper {
+  width: 100%;
+  height: var(--calendar-height);
+  display: grid;
+  column-gap: 10px;
+  row-gap: 10px;
+ }
+ 
+ .content-wrapper>.header {
+  width:100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 42px;
+ }
+
+.content-wrapper .content-item {
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-weight: bolder;
+  transition: background-color 0.25s;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+ }
+
+ .content-item:active {
+  background-color: rgb(227, 232, 227);
+}
+ 
+ .content-wrapper .content-item:hover {
+  transform: scale(1.1) ;
+ }
+
+ .has-events {
+  background-color: #d4cbff; 
+  color: #000; 
+}
+
+.months-wrapper.has-events {
+
+  background-color:#d4cbff ;
 }
